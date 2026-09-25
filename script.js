@@ -2,10 +2,11 @@ let subjects = [];
 
 function addSubject() {
 
-    let subjectName = document.getElementById("subjectName").value;
-    let subjectMark = Number(document.getElementById("subjectMark").value);
+    let subjectName = document.getElementById("subjectName").value.trim();
+    let markInput = document.getElementById("subjectMark").value;
+    let subjectMark = Number(markInput);
 
-    if (subjectName === "" || isNaN(subjectMark)) {
+    if (subjectName === "" || markInput === "") {
         alert("Please enter subject name and marks.");
         return;
     }
@@ -72,54 +73,73 @@ function analyzePerformance() {
 
     let performance;
     let recommendation;
+    let focusMessage;
 
+    // Overall performance
     if (average >= 90) {
 
         performance = "🏆 Excellent";
-
-        recommendation =
-            "Amazing performance! Keep maintaining your consistency and challenge yourself with advanced topics.";
 
     } else if (average >= 75) {
 
         performance = "⭐ Very Good";
 
-        recommendation =
-            "Great work! Your fundamentals are strong. Regular revision and practice can help you improve further.";
-
     } else if (average >= 60) {
 
         performance = "📈 Good";
-
-        recommendation =
-            "You are doing well. Focus more on your weaker subject and practice regularly.";
 
     } else if (average >= 40) {
 
         performance = "📚 Needs Improvement";
 
-        recommendation =
-            "Spend more time revising your concepts and practice questions regularly.";
+    } else {
+
+        performance = "🚨 Needs Attention";
+
+    }
+
+    // Recommendation based on lowest subject
+    if (weakest.mark >= 90) {
+
+        focusMessage =
+            "🏆 Excellent! Your lowest subject is also very strong. Keep maintaining your performance.";
+
+    } else if (weakest.mark >= 75) {
+
+        focusMessage =
+            "⭐ You're performing very well. Maintain your current performance and try to improve this subject further.";
+
+    } else if (weakest.mark >= 60) {
+
+        focusMessage =
+            "📈 You have a good foundation. Spend some extra time practicing this subject.";
+
+    } else if (weakest.mark >= 40) {
+
+        focusMessage =
+            "📚 This subject needs improvement. Revise the basic concepts and practice regularly.";
 
     } else {
 
-        performance = "💪 Needs Attention";
-
-        recommendation =
-            "Start with the basics, study in small sessions, and practice simple questions before moving to difficult topics.";
+        focusMessage =
+            "🚨 This subject needs immediate attention. Start with the basics and practice step by step.";
 
     }
+
+    recommendation =
+        focusMessage;
 
     document.getElementById("result").innerHTML = `
 
         <h2>${performance}</h2>
 
-        <p>📊 Average: <strong>${average.toFixed(2)}%</strong></p>
+        <p>📊 Average:
+        <strong>${average.toFixed(2)}%</strong></p>
 
         <p>💪 Strongest Subject:
         <strong>${strongest.name}</strong> — ${strongest.mark}%</p>
 
-        <p>📚 Focus More On:
+        <p>📚 Lowest Subject:
         <strong>${weakest.name}</strong> — ${weakest.mark}%</p>
 
         <p>💡 <strong>Recommendation:</strong><br>
