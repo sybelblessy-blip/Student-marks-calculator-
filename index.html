@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Marks Calculator</title>
+    <title>Student Performance Analyzer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Student Marks Calculator</h1>
+    <div class="container">
 
-    <label>Student Name:</label>
-    <input type="text" id="name">
+        <h1>🎓 Student Performance Analyzer</h1>
+        <p>Track your performance and get personalized suggestions!</p>
 
-    <br><br>
+        <label>👤 Student Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
 
-    <label>Subject 1:</label>
-    <input type="number" id="mark1">
+        <h2>📚 Add Subjects</h2>
 
-    <br><br>
+        <input type="text" id="subjectName" placeholder="Subject name">
+        <input type="number" id="subjectMark" placeholder="Marks">
 
-    <label>Subject 2:</label>
-    <input type="number" id="mark2">
+        <button onclick="addSubject()">➕ Add Subject</button>
 
-    <br><br>
+        <div id="subjectList"></div>
 
-    <label>Subject 3:</label>
-    <input type="number" id="mark3">
+        <button onclick="analyzePerformance()">
+            📊 Analyze Performance
+        </button>
 
-    <br><br>
+        <button onclick="resetAll()">
+            🔄 Reset
+        </button>
 
-    <button onclick="calculateMarks()">Calculate</button>
+        <div id="result"></div>
 
-    <h3 id="result"></h3>
+    </div>
 
     <script src="script.js"></script>
 
