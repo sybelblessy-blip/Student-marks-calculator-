@@ -1,4 +1,3 @@
-
 let subjects = [];
 
 function addSubject() {
@@ -69,7 +68,7 @@ function displaySubjects() {
 
     let list = "";
 
-    subjects.forEach(function(subject, index) {
+    subjects.forEach(function(subject) {
 
         let grade = getGrade(subject.mark);
         let colorClass = getColorClass(subject.mark);
@@ -122,6 +121,7 @@ function analyzePerformance() {
         if (subject.mark < weakest.mark) {
             weakest = subject;
         }
+
     });
 
     let average = total / subjects.length;
@@ -139,6 +139,7 @@ function analyzePerformance() {
     } else {
         performance = "🚨 Needs Attention";
     }
+
 
     let recommendation;
 
@@ -168,27 +169,35 @@ function analyzePerformance() {
             "🚨 This subject needs immediate attention. Start with the basics and practice step by step.";
     }
 
+
     document.getElementById("result").innerHTML = `
 
         <h2>${performance}</h2>
 
-        <p>📊 Average:
-        <strong>${average.toFixed(2)}%</strong></p>
-
-        <p>💪 Strongest Subject:
-        <strong>${strongest.name}</strong>
-        — ${strongest.mark}%
-        — ${getGrade(strongest.mark)}</p>
-
-        <p>📚 Lowest Subject:
-        <strong>${weakest.name}</strong>
-        — ${weakest.mark}%
-        — ${getGrade(weakest.mark)}</p>
+        <p>
+            📊 Average:
+            <strong>${average.toFixed(2)}%</strong>
+        </p>
 
         <p>
-        💡 <strong>Recommendation:</strong><br>
-        ${recommendation}
+            💪 Strongest Subject:
+            <strong>${strongest.name}</strong>
+            — ${strongest.mark}%
+            — ${getGrade(strongest.mark)}
         </p>
+
+        <p>
+            📚 Lowest Subject:
+            <strong>${weakest.name}</strong>
+            — ${weakest.mark}%
+            — ${getGrade(weakest.mark)}
+        </p>
+
+        <p>
+            💡 <strong>Recommendation:</strong><br>
+            ${recommendation}
+        </p>
+
     `;
 }
 
