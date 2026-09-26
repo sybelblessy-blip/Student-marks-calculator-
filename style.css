@@ -244,3 +244,53 @@ button:active {
         margin: 7px 0;
     }
 }
+.subject-title {
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: #3730a3;
+}
+
+.performance-bar {
+    width: 100%;
+    height: 14px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.8s ease;
+}
+
+.excellent {
+    background: #22c55e;
+}
+
+.very-good {
+    background: #3b82f6;
+}
+
+.good {
+    background: #06b6d4;
+}
+
+.average {
+    background: #eab308;
+}
+
+.improve {
+    background: #f97316;
+}
+
+.poor {
+    background: #ef4444;
+}
+
+.subject-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 15px;
+}
