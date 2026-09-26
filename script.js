@@ -1,3 +1,4 @@
+alert("JavaScript is working!");
 let subjects = [];
 
 function addSubject() {
